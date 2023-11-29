@@ -1,7 +1,13 @@
 import io.ktor.client.*
-import kotlinx.coroutines.*
+import io.ktor.client.plugins.logging.*
+import kotlinx.coroutines.async
+import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.json.Json
-import okhttp3.internal.wait
+import news.apis.ImagesApi
+import news.models.ImageSchema
+import news.models.PagedCharacterSchema
+import news.models.PagedImageSchema
+import news.models.PagedTagSchema
 
 fun main(args: Array<String>) {
     runBlocking {
@@ -20,15 +26,26 @@ fun main(args: Array<String>) {
 suspend fun onRandomJokePressed() {
     println("start")
     val httpClient: HttpClient = HttpClient {
-        // install(Logging)
+        install(Logging) {
+            logger = CustomHttpLogger()
+            level = LogLevel.INFO
+        }
     }
-    val jokesApi: ArtistsApi = ArtistsApi(
-        json = Json.Default,
+    val jokesApi: ImagesApi = ImagesApi(
+        json = Json {
+            ignoreUnknownKeys = true
+            coerceInputValues = true
+        },
         httpClient = httpClient
     )
-    val joke: Result<ArtistSchema> = runCatching { jokesApi.nekosapiArtistsApiArtist(12) }
+    val joke: Result<Unit> = runCatching { jokesApi.nekosapiImagesApiImageReport(2) }
     joke.onSuccess { println("joke: $it") }
         .onSuccess { println("joke: $it") }
-        .onFailure { println("error: $it") }
+        .onFailure { println("error: ${it.message}") }
+}
+class CustomHttpLogger : Logger {
+    override fun log(message: String) {
+       println(message)
+    }
 }
 

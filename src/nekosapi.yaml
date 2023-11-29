@@ -1,7 +1,7 @@
 ﻿openapi: 3.0.2
 info:
   title: Nekos API
-  version: '3'
+  version: v3
   description: An open source anime artworks API.
 paths:
   /v3/:
@@ -26,7 +26,6 @@ paths:
           schema:
             title: Age Rating
             description: The age rating of the image.
-
             type: array
             items:
               type: string
@@ -137,7 +136,6 @@ paths:
           schema:
             title: Age Rating
             description: The age rating of the image.
-
             type: array
             items:
               type: string
@@ -242,7 +240,6 @@ paths:
           schema:
             title: Age Rating
             description: The age rating of the image.
-
             type: array
             items:
               type: string
@@ -332,7 +329,6 @@ paths:
           schema:
             title: Search
             description: Search for a tag by name or description.
-
             type: string
           required: false
           description: Search for a tag by name or description.
@@ -582,7 +578,6 @@ paths:
             description: >-
               Search term. Will return all tags with this term(s) in their name
               or description.
-
             type: string
           required: false
           description: >-
@@ -713,7 +708,6 @@ paths:
           name: search
           schema:
             title: Search
-
             type: string
           required: false
         - in: query
@@ -732,7 +726,6 @@ paths:
           schema:
             title: Gender
             description: The character's gender.
-
             type: string
           required: false
           description: The character's gender.
@@ -741,7 +734,6 @@ paths:
           schema:
             title: Species
             description: The character's species.
-
             type: string
           required: false
           description: The character's species.
@@ -750,7 +742,6 @@ paths:
           schema:
             title: Nationality
             description: The character's nationality.
-
             type: string
           required: false
           description: The character's nationality.
@@ -759,7 +750,6 @@ paths:
           schema:
             title: Occupation(s)
             description: Occupations the character officially has/has officially had.
-
             type: array
             items:
               type: string
@@ -1273,5 +1263,5 @@ components:
         - items
         - count
 servers:
-  - url: 'https://api.nekosapi.com'
+  - url: https://api.nekosapi.com
     description: Production API

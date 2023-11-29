@@ -15,7 +15,10 @@ repositories {
 }
 
 dependencies {
+    val ktor = "2.1.2"
     testImplementation(kotlin("test"))
+//    implementation("io.ktor:ktor-client-core:1.6.8")
+    implementation("io.ktor:ktor-client-logging:$ktor")
     implementation("dev.icerock.moko:network:0.21.0")
     implementation("dev.icerock.moko:network-engine:0.21.0") // configured HttpClientEngine
     implementation("dev.icerock.moko:network-bignum:0.21.0") // kbignum serializer
@@ -34,8 +37,6 @@ mokoNetwork {
     spec("nekos") {
         inputSpec = file("src/nekosapi.yaml")
         packageName = "news"
-        isInternal = false
-        isOpen = true
         enumFallbackNull = false
     }
 }
