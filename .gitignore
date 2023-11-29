@@ -60,3 +60,4 @@ kotlin-ide/
 .kotlin/
 /build
 /gen
+/gradle/wrapper
