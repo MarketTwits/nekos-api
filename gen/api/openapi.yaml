@@ -1,0 +1,69 @@
+openapi: 3.0.0
+info:
+  title: API
+  version: v1
+servers:
+- description: Production API
+  url: https://api.chucknorris.io
+paths:
+  /jokes/random:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Joke'
+          description: OK
+      summary: Get random Chuck joke
+      tags:
+      - jokes
+      x-accepts: application/json
+components:
+  schemas:
+    Joke:
+      example:
+        icon_url: https://assets.chucknorris.host/img/avatar/chuck-norris.png
+        updated_at: 2020-01-05 13:42:26.447675
+        created_at: 2020-01-05 13:42:26.447675
+        categories:
+        - pets
+        - pets
+        id: iOjaUwiHRqOng84Ft0nPvw
+        value: 'Chuck Norris invented Kentucky Fried Chicken''s famous secret recipe
+          with eleven herbs and spices. But nobody ever mentions the twelfth ingredient:
+          Fear.'
+        url: https://api.chucknorris.io/jokes/iOjaUwiHRqOng84Ft0nPvw
+      properties:
+        categories:
+          items:
+            example: pets
+            type: string
+          type: array
+        created_at:
+          example: 2020-01-05 13:42:26.447675
+          type: string
+        icon_url:
+          example: https://assets.chucknorris.host/img/avatar/chuck-norris.png
+          type: string
+        id:
+          example: iOjaUwiHRqOng84Ft0nPvw
+          type: string
+        updated_at:
+          example: 2020-01-05 13:42:26.447675
+          type: string
+        url:
+          example: https://api.chucknorris.io/jokes/iOjaUwiHRqOng84Ft0nPvw
+          type: string
+        value:
+          example: 'Chuck Norris invented Kentucky Fried Chicken''s famous secret
+            recipe with eleven herbs and spices. But nobody ever mentions the twelfth
+            ingredient: Fear.'
+          type: string
+      required:
+      - created_at
+      - id
+      - updated_at
+      - url
+      - value
+
